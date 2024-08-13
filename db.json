@@ -1,0 +1,60 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "imagem": "img/produto-1.jpg",
+      "nome": "Ração de Cachorro",
+      "preco_antigo": 215.0,
+      "preco_novo": 200.0
+    },
+    {
+      "id": 2,
+      "imagem": "img/produto-2.jpg",
+      "nome": "Sementes de Girassol",
+      "preco_antigo": 6.0,
+      "preco_novo": 4.0
+    },
+    {
+      "id": 3,
+      "imagem": "img/produto-3.jpg",
+      "nome": "Gaiola Média",
+      "preco_antigo": 143.0,
+      "preco_novo": 123.0
+    },
+    {
+      "id": 4,
+      "imagem": "img/produto-4.jpg",
+      "nome": "Aquário grande 30L",
+      "preco_antigo": 249.99,
+      "preco_novo": 221.0
+    },
+    {
+      "id": 5,
+      "imagem": "img/produto-5.jpg",
+      "nome": "Ração de gato",
+      "preco_antigo": 45.99,
+      "preco_novo": 30.0
+    },
+    {
+      "id": 6,
+      "imagem": "img/produto-6.jpg",
+      "nome": "Areia de gato Biodegradável",
+      "preco_antigo": 30.0,
+      "preco_novo": 23.25
+    },
+    {
+      "id": 7,
+      "imagem": "img/produto-7.jpg",
+      "nome": "Kit 150 Brinquedos para cachorros",
+      "preco_antigo": 199.99,
+      "preco_novo": 150.0
+    },
+    {
+      "id": 8,
+      "imagem": "img/produto-8.jpg",
+      "nome": "Ração para tartaruga",
+      "preco_antigo": 109.99,
+      "preco_novo": 78.9
+    }
+  ]
+}
