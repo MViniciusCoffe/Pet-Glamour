@@ -2,6 +2,19 @@ const template = document.createElement("template");
 const style = document.createElement("style");
 const globalStyles = new CSSStyleSheet();
 globalStyles.replaceSync(`
+.div-button {
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+.div-button button {
+  background-color: #FFD333;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+}
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -19345,6 +19358,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
   
 `);
+
 template.innerHTML = `
   <div class="product-img position-relative overflow-hidden">
     <slot name="img-product">Product Image</slot>
@@ -19380,6 +19394,9 @@ template.innerHTML = `
       >
       </div>
     </div>
+    <div class="div-button">
+      <button class="adicionar-ao-carrinho">Adicionar ao Carrinho</button>
+    </div>
   </div>
 `;
 
@@ -19390,6 +19407,25 @@ class productCard extends HTMLElement {
     let clone = template.content.cloneNode(true);
     shadowRoot.append(clone);
     shadowRoot.adoptedStyleSheets = [globalStyles];
+
+    const adicionarAoCarrinho = shadowRoot.querySelector(
+      ".adicionar-ao-carrinho"
+    );
+    adicionarAoCarrinho.addEventListener("click", () => {
+      this.addCarrinho();
+    });
+  }
+
+  addCarrinho() {
+    const event = new CustomEvent("add-carrinho", {
+      detail: {
+        nome: this.getAttribute("product-name"),
+        preco_novo: parseFloat(this.getAttribute("product-price")),
+        imagem: this.getAttribute("product-image"),
+        id: this.getAttribute("product-id"),
+      },
+    });
+    window.dispatchEvent(event);
   }
 }
 

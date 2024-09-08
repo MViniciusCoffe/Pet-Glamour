@@ -11,7 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
           const productHTML = `
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
               <div class="product-item bg-light mb-4">
-                <product-card>
+                <product-card
+                  product-id="${product.id}"
+                  product-name="${product.nome}"
+                  product-price="${product.preco_novo}"
+                  product-image="${product.imagem}"
+                >
                   <img
                     slot="img-product"
                     class="img-fluid w-100"
@@ -41,4 +46,44 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   loadProducts();
+
+  function getCart() {
+    const cart = localStorage.getItem("cart");
+    return cart ? JSON.parse(cart) : [];
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  window.addEventListener("add-carrinho", (event) => {
+    const product = event.detail;
+
+    alert("adicionado");
+    let cart = getCart();
+
+    const produtoExistente = cart.find((item) => item.id === product.id);
+    if (produtoExistente) {
+      produtoExistente.quantity += 1;
+    } else {
+      product.quantity = 1;
+      cart.push(product);
+    }
+
+    saveCart(cart);
+    updateCartIcon();
+  });
+
+  function updateCartIcon() {
+    const cart = getCart();
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const cartCount = document.querySelector(".cart-count");
+    if (cartCount) {
+      cartCount.textContent = totalItems;
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    updateCartIcon();
+  });
 });
